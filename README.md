@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Drag and Drop Exercise
 
-## Getting Started
+Projeto criado para testar a biblioteca de Drag And Drop *(@hello-pangea/dnd)* usando React e NextJS.
 
-First, run the development server:
+## Descrição
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Neste projeto você poderá arrastar os objetos entre 3 áreas distintas e adicionar novos items dentro delas separadamente.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+A ideia por trás desse projeto é testar a biblioteca para utilizar em outros projetos. Por exemplo, usar em um projeto para criar algo similar a um Kanban.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Detalhamento
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Primeiramente é necessário criar o contexto da área que terá o comportamento de arrastar e soltar (DragDropContext).
+-  - Propriedades obrigatórias: 
+   
+            onDragEnd={handleOnDragEnd} // função para controlar o que será
+                                            feito no final do arrastar
 
-## Learn More
+- Após criado o contexto é necessário criar a área ou as áreas em que será possível soltar os itens (Droppable).
+   - Propriedades obrigatórias: 
+   
+            droppableId={id}
+            
+            {(provided)=>children}
 
-To learn more about Next.js, take a look at the following resources:
+            {...provided.droppableProps}
+            ref={provided.innerRef}
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+            
+            {provided.placeholder}
+            
+- E por último é necessário criar os itens que serão arrastáveis (Draggable).
+  
+  - Propriedades obrigatórias: 
+   
+            draggableId={item.id} 
+            index={index}
+            {(provided)=>children}
+            ref={provided.innerRef}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Instalação
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    npm i
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    / ou /
+
+    yarn
+
+## Execução
+
+    npm run dev
+
+    / ou /
+
+    yarn dev
+
+## Updates futuros
+
+Futuramente irei adicionar mais comportamentos e personalização, pois no momento o objetivo foi alcançado.
+
+Siga o projeto para se manter atualizado.
